@@ -21,7 +21,7 @@ def resolve_ip(custom_header):
     elif rules["afternoon"]["range"][0] <= hour <= rules["afternoon"]["range"][1]:
         pool_start = rules["afternoon"]["start"]
     elif rules["night"]["range"][0] <= hour <= rules["night"]["range"][1] or \
-         extra_night["range"][0] <= hour <= extra_night["range"][1]:
+        rules["extra_night"]["range"][0] <= hour <= rules["extra_night"]["range"][1]:
         pool_start = rules["night"]["start"]
     else:
         pool_start = 0  
