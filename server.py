@@ -2,15 +2,15 @@ import socket
 import json
 
 with open("rules.json") as f:
-    config = json.load(f)
+    rules_config = json.load(f)
 
 with open("config.json") as f:
-    config = json.load(f)
+    server_config = json.load(f)
 
-HOST = config["host"]
-PORT = config["port"]
-ip_pool = config["ip_pool"]
-rules = config["rules"]
+HOST = server_config["host"]
+PORT = server_config["port"]
+ip_pool = rules_config["ip_pool"]
+rules = rules_config["rules"]
 
 def resolve_ip(custom_header):
     hour = int(custom_header[:2])   
