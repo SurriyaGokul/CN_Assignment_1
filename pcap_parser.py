@@ -8,6 +8,9 @@ def pcap_parser(file):
     with PcapReader(file) as pcap_reader:
         for pkt in pcap_reader:
             if pkt.haslayer(DNS) and pkt.haslayer(DNSQR):
+                # checking if it's mDNS (multicast DNS) 
+                if pkt.haslayer('UDP') and pkt['UDP'].dport == 5353:
+                    continue  # we skip mDNS packets (port 5353)
                 count+=1
                 dns_query_pkts.append(pkt)
     return dns_query_pkts, count
