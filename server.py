@@ -2,10 +2,10 @@ import socket
 import json
 
 with open("rules.json") as f:
-    config = json.load(f)
+    config1 = json.load(f)
 
 with open("config.json") as f:
-    config1 = json.load(f)
+    config = json.load(f)
 
 HOST = config["host"]
 PORT = config["port"]
