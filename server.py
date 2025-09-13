@@ -5,12 +5,12 @@ with open("rules.json") as f:
     config = json.load(f)
 
 with open("config.json") as f:
-    config = json.load(f)
+    config1 = json.load(f)
 
 HOST = config["host"]
 PORT = config["port"]
-ip_pool = config["ip_pool"]
-rules = config["rules"]
+ip_pool = config1["ip_pool"]
+rules = config1["rules"]
 
 def resolve_ip(custom_header):
     hour = int(custom_header[:2])   
@@ -20,8 +20,7 @@ def resolve_ip(custom_header):
         pool_start = rules["morning"]["start"]
     elif rules["afternoon"]["range"][0] <= hour <= rules["afternoon"]["range"][1]:
         pool_start = rules["afternoon"]["start"]
-    elif rules["night"]["range"][0] <= hour <= rules["night"]["range"][1] or \
-        rules["extra_night"]["range"][0] <= hour <= rules["extra_night"]["range"][1]:
+    elif rules["night"]["range"][0] <= hour <= rules["night"]["range"][1] or rules["extra_night"]["range"][0] <= hour <= rules["extra_night"]["range"][1]:
         pool_start = rules["night"]["start"]
     else:
         pool_start = 0  
